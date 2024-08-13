@@ -4,12 +4,11 @@ const TodoNew = (props) => {
 
     const { AddNewTodo } = props;
 
-    // AddNewTodo('Khang');
-
-    const [valueInput, setValueInput] = useState("Khang");
+    const [valueInput, setValueInput] = useState("");
 
     const handleClick = () => {
-        console.log("check value ip: ", valueInput)
+        AddNewTodo(valueInput);
+        setValueInput("");
     }
 
     const handleOnChange = (name) => {
@@ -17,16 +16,20 @@ const TodoNew = (props) => {
 
     }
 
+
+
     return (
         <div className='todo-new'>
             <input type="text"
-                onChange={(event) => { handleOnChange(event.target.value) }}
+                onChange={(event) => {
+                    handleOnChange(event.target.value)
+                }}
+                value={valueInput}
             />
             <button
                 style={{ cursor: "pointer" }}
                 onClick={handleClick}
             >Add</button>
-            <div>My name is {valueInput}</div>
         </div>
     );
 }
